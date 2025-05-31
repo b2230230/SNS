@@ -1,5 +1,5 @@
 import "./globals.css";
-import BootstrapClient from "./components/BootstrapClient";
+import BootstrapClient from "../components/BootstrapClient";
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
             </button>
             <ul className="dropdown-menu" style={{ width: 'auto', minWidth: 'unset' }}>
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href="/profile">
                   プロフィール
                 </a>
               </li>
