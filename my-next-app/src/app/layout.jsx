@@ -32,24 +32,19 @@ export default function RootLayout({ children }) {
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href="/search">
                   検索
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href="/message">
                   メッセージ
                 </a>
               </li>
             </ul>
           </div>{" "}
         </header>
-        <main className="mt-5 pt-1">{children}</main>
-        <footer className="mb-5 fixed-bottom">
-          <div className="d-flex justify-content-end me-5">
-            <a className="btn btn-primary btn-lg"  style={{ width: '50px', height: '50px', borderRadius: '50%' }} href="/addForm">+</a>
-          </div>
-        </footer>
+        <main className="mt-5 pt-2">{children}</main>
       </body>
     </html>
   );
