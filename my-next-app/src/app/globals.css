@@ -27,3 +27,7 @@
     max-width: 300;
   }
 }
+
+.bg-custom {
+  background-color: rgb(241, 241, 241);
+}

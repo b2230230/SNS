@@ -3,10 +3,15 @@ import BootstrapClient from "./components/BootstrapClient";
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
-      <BootstrapClient />
-      <body>
-        <header className="mt-4 ms-4 fixed-top">
-          <div className="dropdown">
+      <body className="bg-custom">
+        <BootstrapClient />
+        <header className="fixed-top">
+          <nav className="navbar bg-body-tertiary">
+            <div className="container-fluid">
+              <span className="navbar-brand mb-0 h1">大学専用SNS</span>
+            </div>
+          </nav>
+          <div className="dropdown mt-4 ms-4">
             <button
               className="btn btn-secondary btn-lg"
               type="button"
@@ -15,14 +20,14 @@ export default function RootLayout({ children }) {
             >
               &#9776;
             </button>
-            <ul className="dropdown-menu">
+            <ul className="dropdown-menu" style={{ width: 'auto', minWidth: 'unset' }}>
               <li>
                 <a className="dropdown-item" href="#">
                   プロフィール
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href="/">
                   ホーム
                 </a>
               </li>
@@ -39,10 +44,10 @@ export default function RootLayout({ children }) {
             </ul>
           </div>{" "}
         </header>
-        <main>{children}</main>
-        <footer className="mb-4 fixed-bottom">
+        <main className="mt-5 pt-1">{children}</main>
+        <footer className="mb-5 fixed-bottom">
           <div className="d-flex justify-content-end me-5">
-            <button className="btn btn-dark btn-lg">+</button>
+            <a className="btn btn-primary btn-lg"  style={{ width: '50px', height: '50px', borderRadius: '50%' }} href="/addForm">+</a>
           </div>
         </footer>
       </body>
