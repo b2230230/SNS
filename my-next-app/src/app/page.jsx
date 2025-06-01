@@ -20,6 +20,16 @@ const Home = () => {
     },
   ];
   const [posts, setPosts] = useState(postData);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageClick = (imageUrl) => {
+    setSelectedImage(imageUrl);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <div>
       <div className="container custom-container">
@@ -45,6 +55,7 @@ const Home = () => {
                       alt="投稿画像"
                       className="img-fluid rounded"
                       style={{ maxHeight: "100px", objectFit: "cover" }}
+                      onClick={() => handleImageClick(post.image)}
                     />
                   )}
                 </div>
@@ -64,6 +75,35 @@ const Home = () => {
           </a>
         </div>
       </footer>
+      {selectedImage && (
+        <div
+          onClick={closeModal}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1050,
+            cursor: "pointer",
+          }}
+        >
+          <img
+            src={selectedImage}
+            alt="拡大画像"
+            style={{
+              maxWidth: "90%",
+              maxHeight: "90%",
+              borderRadius: "10px",
+              boxShadow: "0 0 10px #000",
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };
