@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { useState } from "react";
 const Search = () => {
@@ -7,10 +8,33 @@ const Search = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const fakeData = ["A大学", "B大学", "C大学"];
+    const fakeData = [
+      {
+        id: 1,
+        userId: "1",
+        name: "A大学",
+
+        image:
+          "https://user0514.cdnw.net/shared/img/thumb/aig-ai221017313-xl_TP_V.jpg",
+      },
+      {
+        id: 2,
+        userId: "2",
+        name: "B大学",
+
+        image: null,
+      },
+      {
+        id: 3,
+        userId: "3",
+        name: "C大学",
+        image: null,
+      },
+    ];
     const filtered = fakeData.filter((item) =>
-      item.toLowerCase().includes(query.toLowerCase())
+      item.name.toLowerCase().includes(query.toLowerCase())
     );
+
     setResults(filtered);
   };
 
@@ -35,16 +59,21 @@ const Search = () => {
           {results.map((item, index) => (
             <div key={index} className="card mb-2">
               <div className="card-body">
-                <h6 className="card-title">
-                  <img
-                    src="https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
-                    alt="アイコン"
-                    className="rounded-circle me-2"
-                    width="30"
-                    height="30"
-                  />
-                  {item}
-                </h6>
+                <Link
+                  href={`/profile/${item.userId}`}
+                  className="text-decoration-none text-dark"
+                >
+                  <div className="d-flex align-items-center">
+                    <img
+                      src="https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
+                      alt="アイコン"
+                      className="rounded-circle me-2"
+                      width="30"
+                      height="30"
+                    />
+                    {item.name}
+                  </div>
+                </Link>
               </div>
             </div>
           ))}

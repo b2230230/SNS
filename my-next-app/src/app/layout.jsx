@@ -12,7 +12,10 @@ export default function RootLayout({ children }) {
             </div>
           </nav>
         </header>
-        <div className="dropdown mt-5 ms-4 pt-2 fixed-top" style={{ width: "50px" }}>
+        <div
+          className="dropdown mt-5 ms-4 pt-2 fixed-top"
+          style={{ width: "50px" }}
+        >
           <button
             className="btn btn-secondary btn-lg"
             type="button"
@@ -26,7 +29,7 @@ export default function RootLayout({ children }) {
             style={{ width: "auto", minWidth: "unset" }}
           >
             <li>
-              <a className="dropdown-item" href="/profile">
+              <a className="dropdown-item" href="/profile/user">
                 プロフィール
               </a>
             </li>
@@ -43,6 +46,11 @@ export default function RootLayout({ children }) {
             <li>
               <a className="dropdown-item" href="/message">
                 メッセージ
+              </a>
+            </li>
+            <li>
+              <a className="dropdown-item" href="/like">
+                お気に入り
               </a>
             </li>
             <li>
