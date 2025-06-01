@@ -41,6 +41,11 @@ export default function RootLayout({ children }) {
                   メッセージ
                 </a>
               </li>
+              <li>
+                <a className="dropdown-item" href="/login">
+                  ログイン
+                </a>
+              </li>
             </ul>
           </div>{" "}
         </header>
