@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link"; // ← Next.js のリンクコンポーネント
+import Link from "next/link";
 
 const Home = () => {
   const postData = [
@@ -10,18 +10,30 @@ const Home = () => {
       userId: "1",
       name: "a大学",
       content: "こんにちは！",
-      image:
-        "https://user0514.cdnw.net/shared/img/thumb/aig-ai221017313-xl_TP_V.jpg",
+      image: "https://user0514.cdnw.net/shared/img/thumb/aig-ai221017313-xl_TP_V.jpg",
+      likes: 0,
+      liked: false,
     },
-    { id: 2, userId: "2", name: "b大学", content: "useState便利だね", image: null },
+    {
+      id: 2,
+      userId: "2",
+      name: "b大学",
+      content: "useState便利だね",
+      image: null,
+      likes: 0,
+      liked: false,
+    },
     {
       id: 3,
       userId: "3",
       name: "c大学",
       content: "クラスだけで簡単に装飾できます。",
       image: null,
+      likes: 0,
+      liked: false,
     },
   ];
+
   const [posts, setPosts] = useState(postData);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -33,44 +45,71 @@ const Home = () => {
     setSelectedImage(null);
   };
 
+  const likePost = (id) => {
+    setPosts((prevPosts) =>
+      prevPosts.map((post) =>
+        post.id === id
+          ? {
+            ...post,
+            liked: !post.liked,
+            likes: !post.liked ? post.likes + 1 : post.likes - 1,
+          }
+          : post
+      )
+    );
+  };
+
   return (
     <div>
       <div className="container custom-container">
-        <div className="">
-          {posts.map((post) => {
-            return (
-              <div key={post.id} className="card mb-1">
-                <div className="card-body">
-                  <h6 className="card-title d-flex align-items-center">
-                    <Link href={`/profile`} className="text-decoration-none text-dark">
-                      <div className="d-flex align-items-center">
-                        <img
-                          src="https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
-                          alt="アイコン"
-                          className="rounded-circle me-2"
-                          width="30"
-                          height="30"
-                        />
-                        {post.name}
-                      </div>
-                    </Link>
-                  </h6>
-                  <p className="card-text">{post.content}</p>
-                  {post.image && (
+        {posts.map((post) => (
+          <div key={post.id} className="card mb-1">
+            <div className="card-body">
+              <h6 className="card-title d-flex align-items-center">
+                <Link
+                  href={`/profile`}
+                  className="text-decoration-none text-dark"
+                >
+                  <div className="d-flex align-items-center">
                     <img
-                      src={post.image}
-                      alt="投稿画像"
-                      className="img-fluid rounded"
-                      style={{ maxHeight: "100px", objectFit: "cover" }}
-                      onClick={() => handleImageClick(post.image)}
+                      src="https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
+                      alt="アイコン"
+                      className="rounded-circle me-2"
+                      width="30"
+                      height="30"
                     />
-                  )}
-                </div>
+                    {post.name}
+                  </div>
+                </Link>
+              </h6>
+              <p className="card-text">{post.content}</p>
+              {post.image && (
+                <img
+                  src={post.image}
+                  alt="投稿画像"
+                  className="img-fluid rounded"
+                  style={{ maxHeight: "100px", objectFit: "cover" }}
+                  onClick={() => handleImageClick(post.image)}
+                />
+              )}
+              <div className="d-flex align-items-center mt-2">
+                <button
+                  onClick={() => likePost(post.id)}
+                  className="btn btn-link p-0 me-2"
+                  style={{
+                    fontSize: "1.5rem",
+                    color: post.liked ? "red" : "gray",
+                  }}
+                >
+                  {post.liked ? "❤️" : "♡"}
+                </button>
+                <span>{post.likes} いいね</span>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
+
       <footer className="mb-5 fixed-bottom">
         <div className="d-flex justify-content-end me-5">
           <a
@@ -82,6 +121,7 @@ const Home = () => {
           </a>
         </div>
       </footer>
+
       {selectedImage && (
         <div
           onClick={closeModal}
