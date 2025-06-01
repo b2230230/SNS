@@ -4,9 +4,20 @@ import { useState } from "react";
 
 const Home = () => {
   const postData = [
-    { id: 1, name: "a大学", content: "こんにちは！" },
-    { id: 2, name: "b大学", content: "useState便利だね" },
-    { id: 3, name: "c大学", content: "クラスだけで簡単に装飾できます。" },
+    {
+      id: 1,
+      name: "a大学",
+      content: "こんにちは！",
+      image:
+        "https://user0514.cdnw.net/shared/img/thumb/aig-ai221017313-xl_TP_V.jpg",
+    },
+    { id: 2, name: "b大学", content: "useState便利だね", image: null },
+    {
+      id: 3,
+      name: "c大学",
+      content: "クラスだけで簡単に装飾できます。",
+      image: null,
+    },
   ];
   const [posts, setPosts] = useState(postData);
   return (
@@ -28,6 +39,14 @@ const Home = () => {
                     {post.name}
                   </h6>
                   <p className="card-text">{post.content}</p>
+                  {post.image && (
+                    <img
+                      src={post.image}
+                      alt="投稿画像"
+                      className="img-fluid rounded"
+                      style={{ maxHeight: "100px", objectFit: "cover" }}
+                    />
+                  )}
                 </div>
               </div>
             );
