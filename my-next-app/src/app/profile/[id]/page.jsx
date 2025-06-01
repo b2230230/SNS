@@ -95,15 +95,44 @@ const Profile = ({ params }) => {
           {posts.map((post) => (
             <div key={post.id} className="card mb-2">
               <div className="card-body">
-                <h6 className="card-title">
-                  <img
-                    src="https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
-                    alt="アイコン"
-                    className="rounded-circle me-2"
-                    width="30"
-                    height="30"
-                  />
-                  ○○大学
+                <h6 className="card-title d-flex justify-content-between align-items-center">
+                  <span className="d-flex align-items-center">
+                    <img
+                      src="https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
+                      alt="アイコン"
+                      className="rounded-circle me-2"
+                      width="30"
+                      height="30"
+                    />
+                    ○○大学
+                  </span>
+                  <div class="dropdown">
+                    <a
+                      class="btn"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      ・・・
+                    </a>
+
+                    <ul
+                      class="dropdown-menu"
+                      style={{ width: "auto", minWidth: "unset" }}
+                    >
+                      <li>
+                        <a class="dropdown-item" href="/readdForm">
+                          編集
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          削除
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </h6>
                 <p className="card-text">{post.content}</p>
                 <div className="d-flex align-items-center mt-2">
