@@ -1,0 +1,33 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.custom-container {
+  max-width: 1000px; 
+}
+
+@media (max-width: 1150px) {
+  .custom-container {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 950px) {
+  .custom-container {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 750px) {
+  .custom-container {
+    max-width: 400;
+  }
+}
+
+@media (max-width: 550px) {
+  .custom-container {
+    max-width: 300;
+  }
+}
+
+.bg-custom {
+  background-color: rgb(241, 241, 241);
+}
