@@ -10,7 +10,8 @@ const Home = () => {
       userId: "1",
       name: "a大学",
       content: "こんにちは！",
-      image: "https://user0514.cdnw.net/shared/img/thumb/aig-ai221017313-xl_TP_V.jpg",
+      image:
+        "https://user0514.cdnw.net/shared/img/thumb/aig-ai221017313-xl_TP_V.jpg",
       likes: 0,
       liked: false,
     },
@@ -50,10 +51,10 @@ const Home = () => {
       prevPosts.map((post) =>
         post.id === id
           ? {
-            ...post,
-            liked: !post.liked,
-            likes: !post.liked ? post.likes + 1 : post.likes - 1,
-          }
+              ...post,
+              liked: !post.liked,
+              likes: !post.liked ? post.likes + 1 : post.likes - 1,
+            }
           : post
       )
     );
@@ -110,17 +111,16 @@ const Home = () => {
         ))}
       </div>
 
-      <footer className="mb-5 fixed-bottom">
-        <div className="d-flex justify-content-end me-5">
-          <a
-            className="btn btn-primary btn-lg"
-            style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-            href="/addForm"
-          >
-            +
-          </a>
-        </div>
-      </footer>
+      <div className="position-fixed bottom-0 end-0 me-5 mb-5">
+  <a
+    className="btn btn-primary btn-lg d-flex align-items-center justify-content-center"
+    style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+    href="/addForm"
+  >
+    +
+  </a>
+</div>
+
 
       {selectedImage && (
         <div
