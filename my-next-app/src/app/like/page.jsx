@@ -47,7 +47,7 @@ const postData = [
           <div className="card-body">
             <h6 className="card-title d-flex align-items-center">
               <Link
-                href={`/profile`}
+                href={`/profile/${post.userId}`}
                 className="text-decoration-none text-dark"
               >
                 <div className="d-flex align-items-center">
