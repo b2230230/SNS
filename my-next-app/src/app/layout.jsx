@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
             </div>
           </nav>
         </header>
-        <div className="dropdown mt-5 ms-4 pt-2" style={{ width: "50px" }}>
+        <div className="dropdown mt-5 ms-4 pt-2 fixed-top" style={{ width: "50px" }}>
           <button
             className="btn btn-secondary btn-lg"
             type="button"
@@ -52,7 +52,7 @@ export default function RootLayout({ children }) {
             </li>
           </ul>
         </div>
-        <main className="">{children}</main>
+        <main className="mt-5 pt-2">{children}</main>
       </body>
     </html>
   );
