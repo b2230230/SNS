@@ -96,7 +96,7 @@ const Home = () => {
               <div className="d-flex align-items-center mt-2">
                 <button
                   onClick={() => likePost(post.id)}
-                  className="btn btn-link p-0 me-2"
+                  className="btn p-0 me-2 no-outline"
                   style={{
                     fontSize: "1.5rem",
                     color: post.liked ? "red" : "gray",
@@ -104,6 +104,7 @@ const Home = () => {
                 >
                   {post.liked ? "❤️" : "♡"}
                 </button>
+
                 <span>{post.likes} いいね</span>
               </div>
             </div>
@@ -112,15 +113,14 @@ const Home = () => {
       </div>
 
       <div className="position-fixed bottom-0 end-0 me-5 mb-5">
-  <a
-    className="btn btn-primary btn-lg d-flex align-items-center justify-content-center"
-    style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-    href="/addForm"
-  >
-    +
-  </a>
-</div>
-
+        <a
+          className="btn btn-primary btn-lg d-flex align-items-center justify-content-center"
+          style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+          href="/addForm"
+        >
+          +
+        </a>
+      </div>
 
       {selectedImage && (
         <div
