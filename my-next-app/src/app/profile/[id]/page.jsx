@@ -62,7 +62,7 @@ const Profile = ({ params }) => {
       {/* プロフィール情報 */}
       <div className="container mt-5">
         <div className="row align-items-center">
-          <h5 className="col-auto my-0">かんた</h5>
+          <h5 className="col-auto my-0">○○大学</h5>
           {id === "user" ? (
             <></>
           ) : (
@@ -103,7 +103,7 @@ const Profile = ({ params }) => {
                     width="30"
                     height="30"
                   />
-                  かんた
+                  ○○大学
                 </h6>
                 <p className="card-text">{post.content}</p>
                 <div className="d-flex align-items-center mt-2">
