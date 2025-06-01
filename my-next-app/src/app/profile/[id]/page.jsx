@@ -40,13 +40,21 @@ const Profile = ({ params }) => {
       {/* ヘッダー画像とアイコン */}
       <div className="position-relative">
         <img
-          src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61"
+          src={
+            id === "user"
+              ? "https://tabicoffret.com/uploads/b99dc17381e88e19cc064127da00e86d_m.jpg"
+              : "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61"
+          }
           className="w-100"
           style={{ height: "200px", objectFit: "cover" }}
           alt="header"
         />
         <img
-          src="https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
+          src={
+            id === "user"
+              ? "https://www.homes.co.jp/life/images/20211224021152/th_th_pixta_77370244_M-2000x1333.jpg"
+              : "https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
+          }
           className="rounded-circle border border-white position-absolute mb-3"
           alt="アイコン"
           width="100"
@@ -98,7 +106,11 @@ const Profile = ({ params }) => {
                 <h6 className="card-title d-flex justify-content-between align-items-center">
                   <span className="d-flex align-items-center">
                     <img
-                      src="https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
+                      src={
+                        id === "user"
+                          ? "https://www.homes.co.jp/life/images/20211224021152/th_th_pixta_77370244_M-2000x1333.jpg"
+                          : "https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
+                      }
                       alt="アイコン"
                       className="rounded-circle me-2"
                       width="30"
@@ -106,9 +118,9 @@ const Profile = ({ params }) => {
                     />
                     ○○大学
                   </span>
-                  <div class="dropdown">
+                  <div className="dropdown">
                     <a
-                      class="btn"
+                      className="btn"
                       href="#"
                       role="button"
                       data-bs-toggle="dropdown"
@@ -118,16 +130,16 @@ const Profile = ({ params }) => {
                     </a>
 
                     <ul
-                      class="dropdown-menu"
+                      className="dropdown-menu"
                       style={{ width: "auto", minWidth: "unset" }}
                     >
                       <li>
-                        <a class="dropdown-item" href="/readdForm">
+                        <a className="dropdown-item" href="/readdForm">
                           編集
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <a className="dropdown-item" href="#">
                           削除
                         </a>
                       </li>
