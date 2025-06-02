@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 
-const AddForm = ({ onAdd }) => {
-  const [content, setContent] = useState('');
+const ReaddForm = ({ onAdd }) => {
+  const [content, setContent] = useState(' こんにちは！新しい投稿です。');
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
 
@@ -56,11 +56,11 @@ const AddForm = ({ onAdd }) => {
         )}
 
         <button type="submit" className="btn btn-primary mt-2">
-          投稿する
+          再投稿する
         </button>
       </form>
     </div>
   );
 };
 
-export default AddForm;
+export default ReaddForm;

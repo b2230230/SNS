@@ -1,24 +1,40 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const Home = () => {
   const postData = [
     {
       id: 1,
+      userId: "1",
       name: "a大学",
       content: "こんにちは！",
       image:
         "https://user0514.cdnw.net/shared/img/thumb/aig-ai221017313-xl_TP_V.jpg",
+      likes: 0,
+      liked: false,
     },
-    { id: 2, name: "b大学", content: "useState便利だね", image: null },
+    {
+      id: 2,
+      userId: "2",
+      name: "b大学",
+      content: "useState便利だね",
+      image: null,
+      likes: 0,
+      liked: false,
+    },
     {
       id: 3,
+      userId: "3",
       name: "c大学",
       content: "クラスだけで簡単に装飾できます。",
       image: null,
+      likes: 0,
+      liked: false,
     },
   ];
+
   const [posts, setPosts] = useState(postData);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -30,15 +46,32 @@ const Home = () => {
     setSelectedImage(null);
   };
 
+  const likePost = (id) => {
+    setPosts((prevPosts) =>
+      prevPosts.map((post) =>
+        post.id === id
+          ? {
+              ...post,
+              liked: !post.liked,
+              likes: !post.liked ? post.likes + 1 : post.likes - 1,
+            }
+          : post
+      )
+    );
+  };
+
   return (
     <div>
       <div className="container custom-container">
-        <div className="">
-          {posts.map((post) => {
-            return (
-              <div key={post.id} className="card mb-1">
-                <div className="card-body">
-                  <h6 className="card-title">
+        {posts.map((post) => (
+          <div key={post.id} className="card mb-1">
+            <div className="card-body">
+              <h6 className="card-title d-flex align-items-center">
+                <Link
+                  href={`/profile/${post.userId}`}
+                  className="text-decoration-none text-dark"
+                >
+                  <div className="d-flex align-items-center">
                     <img
                       src="https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
                       alt="アイコン"
@@ -47,34 +80,48 @@ const Home = () => {
                       height="30"
                     />
                     {post.name}
-                  </h6>
-                  <p className="card-text">{post.content}</p>
-                  {post.image && (
-                    <img
-                      src={post.image}
-                      alt="投稿画像"
-                      className="img-fluid rounded"
-                      style={{ maxHeight: "100px", objectFit: "cover" }}
-                      onClick={() => handleImageClick(post.image)}
-                    />
-                  )}
-                </div>
+                  </div>
+                </Link>
+              </h6>
+              <p className="card-text">{post.content}</p>
+              {post.image && (
+                <img
+                  src={post.image}
+                  alt="投稿画像"
+                  className="img-fluid rounded"
+                  style={{ maxHeight: "100px", objectFit: "cover" }}
+                  onClick={() => handleImageClick(post.image)}
+                />
+              )}
+              <div className="d-flex align-items-center mt-2">
+                <button
+                  onClick={() => likePost(post.id)}
+                  className="btn p-0 me-2 no-outline"
+                  style={{
+                    fontSize: "1.5rem",
+                    color: post.liked ? "red" : "gray",
+                  }}
+                >
+                  {post.liked ? "❤️" : "♡"}
+                </button>
+
+                <span>{post.likes} いいね</span>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
-      <footer className="mb-5 fixed-bottom">
-        <div className="d-flex justify-content-end me-5">
-          <a
-            className="btn btn-primary btn-lg"
-            style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-            href="/addForm"
-          >
-            +
-          </a>
-        </div>
-      </footer>
+
+      <div className="position-fixed bottom-0 end-0 me-5 mb-5">
+        <a
+          className="btn btn-primary btn-lg d-flex align-items-center justify-content-center"
+          style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+          href="/addForm"
+        >
+          +
+        </a>
+      </div>
+
       {selectedImage && (
         <div
           onClick={closeModal}

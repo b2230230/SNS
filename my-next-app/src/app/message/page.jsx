@@ -11,12 +11,28 @@ const Message = () => {
     setContent("");
   };
   return (
-    <div className="container custom-container mt-5">
+    <div className="container custom-container">
+      <div className="text-center border-bottom">
+        <h2
+          className="card-title d-inline-flex align-items-center"
+          style={{ gap: "8px", height: "35px" }}
+        >
+          <img
+            src="https://user0514.cdnw.net/shared/img/thumb/aig-ai230531008-xl_TP_V.jpg"
+            alt="アイコン"
+            className="rounded-circle"
+            width="35"
+            height="35"
+          />
+          ○○大学
+        </h2>
+      </div>
+
       <div
         style={{
           position: "fixed",
           bottom: 0,
-          width: "80%"
+          width: "80%",
         }}
       >
         <form onSubmit={handleSubmit} className="mb-4 row">
